@@ -1,22 +1,9 @@
-*.rbc
-.bundle
-.config
-coverage
-InstalledFiles
-lib/bundler/man
-pkg
-rdoc
-spec/reports
-test/tmp
-test/version_tmp
-tmp
-\#*
-.\#*
-
-# YARD artifacts
-.yardoc
-_yardoc
-doc/
-
-# emacs things
-*~
+/.bundle/
+/.yardoc
+/Gemfile.lock
+/_yardoc/
+/coverage/
+/doc/
+/pkg/
+/spec/reports/
+/tmp/
