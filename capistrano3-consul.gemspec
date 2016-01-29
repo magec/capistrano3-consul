@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
 
   spec.summary       = 'Plugin to use a consul server/cluster to define capistrano servers.'
   spec.description   = 'This plugin allow using a consul server to automatically set up servers.'
-  spec.homepage      = 'https://github.com/magec/capistrano-consul'
+  spec.homepage      = 'https://github.com/magec/capistrano3-consul'
   spec.license       = 'MIT'
 
   # Prevent pushing this gem to RubyGems.org by setting 'allowed_push_host', or
