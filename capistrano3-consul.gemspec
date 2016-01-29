@@ -4,7 +4,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'capistrano/consul/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = 'capistrano-consul'
+  spec.name          = 'capistrano3-consul'
   spec.version       = Capistrano::Consul::VERSION
   spec.authors       = ['Jose Fernandez (magec)']
   spec.email         = ['joseferper@gmail.com']
