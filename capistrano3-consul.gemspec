@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ['joseferper@gmail.com']
 
   spec.summary       = 'Plugin to use a consul server/cluster to define capistrano servers.'
-  spec.description   = 'This plugin allow using a consul server to automatically set up servers.'
+  spec.description   = 'Use consul as a server inventory for capistrano.'
   spec.homepage      = 'https://github.com/magec/capistrano3-consul'
   spec.license       = 'MIT'
 
