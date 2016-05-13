@@ -1,5 +1,6 @@
 require 'capistrano/consul/version'
 require 'diplomat'
+require 'net/ssh/gateway'
 
 module Capistrano
   module Consul
@@ -7,7 +8,16 @@ module Capistrano
       return if @url
       @url = fetch(:consul_url)
       return false unless @url
+      @ssh_gateway = fetch(:consul_ssh_gateway)
+      if @ssh_gateway
+        @gateway = Net::SSH::Gateway.new(@ssh_gateway[:host], @ssh_gateway[:username], @ssh_gateway[:options])
+        @gateway.open('127.0.0.1', @ssh_gateway[:port], @ssh_gateway[:port])
+      end
 
+      if @use_ssh_proxy
+        @ssh_options = fetch(:ssh_options)
+        return false unless @ssh_options[:proxy]
+      end
       Diplomat.configure do |config|
         config.url = @url
       end

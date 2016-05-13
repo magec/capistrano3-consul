@@ -1,8 +1,6 @@
 # Capistrano::Consul
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/capistrano/consul`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+Allows capistrano to obtain the list of servers using a consul server
 
 ## Installation
 
@@ -22,8 +20,37 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+In capistrano.
 
+```ruby
+require 'capistrano/consul'
+```
+
+In your code, then you can map a consul service to roles in capistrano
+```ruby
+consul_service 'app_server', roles %w{web app}
+```
+
+Also, you can use #consul_all_nodes to refer to every node in consul (useful for some tasks)
+
+```ruby
+consul_all_nodes roles %w{web app}
+```
+
+## Configuration
+**consul_url** The api endpoint
+**consul_ssh_gateway** You can configure an ssh gateway (i.e. a tunner that will be created before connecting to consul).
+
+Example:
+``` ruby
+set :consul_url, 'http://localhost:8500'
+set :consul_ssh_gateway, {
+      host: your.gateway.server,
+      user: ENV['USER'],
+      port: 8500, (this port will be used for tunneling)
+      options: {ssh options here}
+    }
+```
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
