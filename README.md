@@ -39,6 +39,7 @@ consul_all_nodes roles %w{web app}
 
 ## Configuration
 **consul_url** The api endpoint
+**consul_token** The Consul token needed if an ACL is specified
 **consul_ssh_gateway** You can configure an ssh gateway (i.e. a tunner that will be created before connecting to consul).
 
 Example:

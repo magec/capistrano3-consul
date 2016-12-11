@@ -7,6 +7,7 @@ module Capistrano
     def self.setup
       return if @url
       @url = fetch(:consul_url)
+      @token = fetch(:consul_token)
       return false unless @url
       @ssh_gateway = fetch(:consul_ssh_gateway)
       if @ssh_gateway
@@ -16,6 +17,9 @@ module Capistrano
 
       Diplomat.configure do |config|
         config.url = @url
+        if @token
+          config.acl_token = @token
+        end
       end
     end
   end
