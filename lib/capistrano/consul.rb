@@ -11,7 +11,7 @@ module Capistrano
       return false unless @url
       @ssh_gateway = fetch(:consul_ssh_gateway)
       if @ssh_gateway
-        @gateway = Net::SSH::Gateway.new(@ssh_gateway[:host], @ssh_gateway[:username], @ssh_gateway[:options] || {})
+        @gateway = Net::SSH::Gateway.new(@ssh_gateway[:host], @ssh_gateway[:username] || @ssh_gateway[:user], @ssh_gateway[:options] || {})
         @gateway.open('127.0.0.1', @ssh_gateway[:port], @ssh_gateway[:port])
       end
 
