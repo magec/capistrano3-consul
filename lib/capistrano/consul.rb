@@ -28,16 +28,16 @@ module Capistrano
     def consul_all_nodes(properties = {})
       Consul.setup
       Diplomat::Node.get_all.each_with_index do |node, index|
-        properties[:primary] = true if index == 0
-        server(node['Address'], properties)
+        extra_properties = index.zero? ? { primary: true } : {}
+        server(node['Address'], properties.merge(extra_properties))
       end
     end
 
     def consul_service(service_name, properties = {})
       Consul.setup
       Diplomat::Service.get(service_name, :all).each_with_index do |node, index|
-        properties[:primary] = true if index == 0
-        server(node['Address'], properties)
+        extra_properties = index.zero? ? { primary: true } : {}
+        server(node['Address'], properties.merge(extra_properties))
       end
     end
   end
